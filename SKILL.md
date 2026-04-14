@@ -8,9 +8,74 @@ metadata:
 ---
 
 # Image Paginator
+> 将长截图/长图智能分页为规范 PDF，支持网格切片、页码标注、微信证据排版
 
-## When to use this skill
-Use this skill when the user provides one or more long images (like long chat screenshots, full webpage captures, or multiple screenshots in order) and wants to convert them into a well-formatted PDF document.
+---
+
+## 📌 快速上手（律师场景示例）
+
+**场景：微信聊天截图 → 提交法院的证据 PDF**
+
+```bash
+# 1. 律师导出微信聊天记录为长截图
+# 2. 一键转换：
+python scripts/slice_n_pdf.py "/Users/律师/Desktop/聊天记录.jpg" \
+  -d "/Users/律师/Desktop" -o "聊天证据_20250105.pdf" --clean
+
+# 3. 直接提交 PDF，打印存档，或发邮件
+open "/Users/律师/Desktop/聊天证据_20250105.pdf"
+```
+
+---
+
+## ⚖️ 律师场景专区
+
+### 适用场景
+
+| 场景 | 输入 | 输出 |
+|------|------|------|
+| 微信聊天证据截图 | 微信长截图（竖向拼接后） | 分页 PDF，含页码+序号 |
+| 合同附件超长截图 | 多页合同 PDF 截图拼接 | A4 规范 PDF，可打印 |
+| 笔录/判决书截图 | 判决书长截图 | 2×2 网格 PDF，便于阅读 |
+| 批量证据材料归档 | 多张证据截图（不同尺寸） | 统一宽度，竖向拼接，分页 |
+| 邮件/短信截图证据 | 手机截图 | 带间距 PDF，避免阅读串行 |
+
+### 输入规范建议
+
+- **分辨率**：推荐 1080px 宽，最佳清晰度
+- **格式**：PNG / JPG 均可，建议 PNG 保留更多细节
+- **多张截图**：按时间顺序传入，自动按顺序拼接
+- **不要裁剪**：保持原始宽高比，工具会自动适配
+
+### 输出规范
+
+- **纸张尺寸**：A4（595 × 842 pt）
+- **网格布局**：默认 2 列 × 2 行，每页 4 格
+- **页码**：底部居中，格式 `— N —`
+- **切片编号**：每个格子左上角标注，格式如 `1-1`、`2-3`
+- **间距**：格子间默认留 40px 灰色间隙，便于翻页区分
+- **尾部合并**：最后一页不足一格时，自动合并到前一页，避免孤零零一行
+
+### 法院提交注意事项
+
+1. 截图完整性：确保聊天记录从头到尾完整，不要断章取义
+2. 时间戳：PDF 页码和序号可以快速定位原文位置
+3. 尺寸：导出前确认截图宽度统一（建议 1080px），避免 PDF 页面大小不一
+4. 合并打印：如有多个案件，可先生成多个 PDF，再合并为一个文件
+
+---
+
+## 📊 效果示意图
+
+### 场景总览
+![场景总览](diagram_scenarios.png)
+
+### 律师场景：输入 → 输出
+![律师场景对比](diagram_lawyer_beforeafter.png)
+
+> 💡 示意图仅供参考，实际效果取决于截图分辨率和参数设置。
+
+---
 
 ## Prerequisites
 Required python packages: `Pillow`, `fpdf2`.
