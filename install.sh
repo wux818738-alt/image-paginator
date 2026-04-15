@@ -19,7 +19,7 @@ if [ -d "$SKILL_DIR" ]; then
 fi
 
 # 下载 zip
-echo "   ⬇️  下载: $REPO_URL"
+echo "   ⬇️  下载: $ZIP_URL"
 curl -fsSL "$ZIP_URL" -o "$ZIP_FILE"
 
 # 解压（自动解压到 image-paginator-main/）
