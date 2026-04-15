@@ -117,3 +117,13 @@ python scripts/slice_n_pdf.py ~/Desktop/长图.jpg \
 ## License
 
 MIT
+
+---
+
+## 更新日志
+
+### 2026-04-15
+- ✨ 添加参数校验功能：检查 tile/bleed/cols/rows 等参数合法性
+- 🐛 修复 install.sh 中的变量名错误：`$REPO_URL` → `$ZIP_URL`
+- 💡 优化错误提示：参数错误时显示清晰的错误信息
+
