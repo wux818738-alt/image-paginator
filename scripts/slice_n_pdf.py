@@ -221,6 +221,29 @@ def main():
     ap.add_argument("--clean", action="store_true", help="Remove tile images after build.")
     args = ap.parse_args()
 
+    # ── 参数校验 ────────────────────────────────────────────────
+    errors = []
+    if args.tile < 100:
+        errors.append(f"--tile ({args.tile}) must be ≥ 100 pixels.")
+    if args.bleed < 0:
+        errors.append(f"--bleed ({args.bleed}) must be ≥ 0.")
+    if args.tile <= args.bleed:
+        errors.append(f"--tile ({args.tile}) must be strictly greater than --bleed ({args.bleed}).")
+    if args.cols < 1 or args.cols > 10:
+        errors.append(f"--cols ({args.cols}) must be between 1 and 10.")
+    if args.rows < 1 or args.rows > 10:
+        errors.append(f"--rows ({args.rows}) must be between 1 and 10.")
+    if args.gutter < 0:
+        errors.append(f"--gutter ({args.gutter}) must be ≥ 0.")
+    if args.edge < 0:
+        errors.append(f"--edge ({args.edge}) must be ≥ 0.")
+    if errors:
+        for e in errors:
+            print(f"  ✗ {e}", file=sys.stderr)
+        sys.exit(1)
+    print("  ✓ Arguments validated OK")
+
+
     dest = Path(args.dest).expanduser().resolve()
     dest.mkdir(parents=True, exist_ok=True)
     pdf_path = dest / args.output
