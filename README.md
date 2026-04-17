@@ -116,7 +116,7 @@ python scripts/slice_n_pdf.py ~/Desktop/长图.jpg \
 
 ## License
 
-MIT
+GPL-3.0
 
 ---
 
