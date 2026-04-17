@@ -1,6 +1,6 @@
 #!/bin/bash
 # ============================================================
-#  image-paginator 一键安装脚本
+#  image-paginator（律师证据长截图转PDF）一键安装脚本
 #  用法: bash install.sh
 # ============================================================
 set -e
@@ -9,7 +9,7 @@ SKILL_DIR="${HOME}/.qclaw/skills/image-paginator"
 ZIP_URL="https://github.com/wux818738-alt/openclaw-skill-image-paginator/archive/refs/heads/main.zip"
 ZIP_FILE="/tmp/image-paginator-main.zip"
 
-echo "📦 正在安装 image-paginator ..."
+echo "📦 正在安装 image-paginator（律师证据长截图转PDF）..."
 echo "   目标目录: $SKILL_DIR"
 
 # 清理旧版本

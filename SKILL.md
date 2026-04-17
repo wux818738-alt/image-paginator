@@ -1,13 +1,13 @@
 ---
 name: image-paginator
-description: Slices long images/screenshots into overlapping segments, adds sequence numbers, and auto-arranges them into a paginated PDF with gaps and page numbers. Supports multiple images.
+description: Slices long images/screenshots into overlapping segments, adds sequence numbers, and auto-arranges them into a paginated PDF with gaps and page numbers. Supports multiple images. (律师证据长截图转PDF)
 license: MIT
 metadata:
   author: WUDI
-  version: "2.0"
+  version: "2.1"
 ---
 
-# Image Paginator
+# Image Paginator（律师证据长截图转PDF）
 > 将长截图/长图智能分页为规范 PDF，支持网格切片、页码标注、微信证据排版
 
 ---
@@ -51,7 +51,7 @@ open "/Users/律师/Desktop/聊天证据_20250105.pdf"
 
 - **纸张尺寸**：A4（595 × 842 pt）
 - **网格布局**：默认 2 列 × 2 行，每页 4 格
-- **页码**：底部居中，格式 `— N —`
+- **页码**：底部居中，格式 `- N -`
 - **切片编号**：每个格子左上角标注，格式如 `1-1`、`2-3`
 - **间距**：格子间默认留 40px 灰色间隙，便于翻页区分
 - **尾部合并**：最后一页不足一格时，自动合并到前一页，避免孤零零一行
@@ -103,13 +103,14 @@ python scripts/slice_n_pdf.py <source1> [source2 ...] -d <output_dir> [OPTIONS]
 * `--no-numbers`: Omit page numbers at the bottom.
 * `--clean`: Remove intermediate tile images after build.
 
-### Key Features (v2.0)
+### Key Features (v2.1)
 1. **Multiple source images**: Pass multiple paths; images auto-resize to uniform width and concatenate vertically.
 2. **Sequence numbers**: Each tile has a numbered badge (1, 2, 3…) on the top-left corner.
 3. **Gaps between tiles**: Configurable gutter with light gray cell backgrounds for readability.
 4. **Consistent page sizes**: All PDF pages share the same dimensions.
 5. **Page numbers**: Each page has a centered `- N -` footer (disable with `--no-numbers`).
 6. **Adaptive tail merging**: Short tail segments merge into the previous tile to avoid tiny orphans.
+7. **Parameter validation**: Auto-checks tile > bleed, cols/rows range (1-10), file existence, etc.
 
 ## ⚠️ Important Instructions for the Agent (Guardrails)
 1. **Always use `--clean`** by default unless the user specifically asks to keep tiles.
