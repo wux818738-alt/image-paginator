@@ -1,7 +1,7 @@
 ---
 name: image-paginator
 description: Slices long images/screenshots into overlapping segments, adds sequence numbers, and auto-arranges them into a paginated PDF with gaps and page numbers. Supports multiple images. (律师证据长截图转PDF)
-license: MIT
+license: GPL-3.0
 metadata:
   author: WUDI
   version: "2.1"
@@ -177,3 +177,5 @@ pip3 install fpdf2 Pillow
 ```bash
 python ~/.qclaw/skills/image-paginator/scripts/slice_n_pdf.py <图片> -d <输出目录>
 ```
+
+8e233170e0c6a8143fd44d63d24987ee53228db8
